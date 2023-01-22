@@ -1,13 +1,14 @@
 const express = require("express");
-const cors = require("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const dotenv = require("dotenv");
+dotenv.config();
+const cors = require("cors");
+
 const indexRouter = require("./routes/index");
 const lineRouter = require("./routes/line");
 
-dotenv.config();
 const app = express();
 app.use(cors()); // allow all origin
 
