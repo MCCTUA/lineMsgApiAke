@@ -1,8 +1,8 @@
 exports.sendImageMap = () => {
   let msg = {
-    type: "imagemap",
+    type: 'imagemap',
     baseUrl: `${process.env.BASE_URL}/images/static/imagemap`,
-    altText: "โปรดเลือก Menu ของเรา",
+    altText: 'โปรดเลือก Menu ของเรา',
     baseSize: {
       width: 1040,
       height: 1040,
@@ -17,14 +17,14 @@ exports.sendImageMap = () => {
         height: 521,
       },
       externalLink: {
-        linkUri: "https://google.com",
-        label: "ดูวิดีโอทั้งหมด",
+        linkUri: 'https://google.com',
+        label: 'ดูวิดีโอทั้งหมด',
       },
     },
     actions: [
       {
-        type: "uri",
-        linkUri: "https://codingthailand.com",
+        type: 'uri',
+        linkUri: 'https://codingthailand.com',
         area: {
           x: 0,
           y: 521,
@@ -33,8 +33,8 @@ exports.sendImageMap = () => {
         },
       },
       {
-        type: "message",
-        text: "555",
+        type: 'message',
+        text: '555',
         area: {
           x: 521,
           y: 521,
@@ -43,7 +43,7 @@ exports.sendImageMap = () => {
         },
       },
     ],
-  };
+  }
 
-  return msg;
-};
+  return msg
+}

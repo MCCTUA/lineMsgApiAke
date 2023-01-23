@@ -1,29 +1,29 @@
-const config = require("../config/line");
-const { sendImage } = require("./send-image");
-const { sendImageMap } = require("./send-imagemap");
-const { sendLocation } = require("./send-location");
-const { sendText } = require("./send-text");
+const config = require('../config/line')
+const { sendImage } = require('./send-image')
+const { sendImageMap } = require('./send-imagemap')
+const { sendLocation } = require('./send-location')
+const { sendText } = require('./send-text')
 
 exports.handleMessage = (event) => {
-  let msg;
+  let msg
 
   switch (event.message.text.toLowerCase().trim()) {
-    case "image":
-      msg = sendImage();
-      break;
+    case 'image':
+      msg = sendImage()
+      break
 
-    case "imagemap":
-      msg = sendImageMap();
-      break;
+    case 'imagemap':
+      msg = sendImageMap()
+      break
 
-    case "location":
-      msg = sendLocation();
+    case 'location':
+      msg = sendLocation()
 
-      break;
+      break
     default:
-      msg = sendText(event);
+      msg = sendText(event)
   }
 
   // use reply API
-  return config.client.replyMessage(event.replyToken, msg);
-};
+  return config.client.replyMessage(event.replyToken, msg)
+}
