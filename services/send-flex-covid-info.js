@@ -8,7 +8,7 @@ exports.sendFlexCovidInfo = async () => {
     }
   )
 
-  console.log(response.data)
+  //   console.log(response.data)
 
   let msg = {
     type: 'flex',
@@ -23,7 +23,7 @@ exports.sendFlexCovidInfo = async () => {
         aspectMode: 'cover',
         action: {
           type: 'uri',
-          uri: 'http://linecorp.com/',
+          uri: 'https://ddc.moph.go.th/covid19-dashboard/',
         },
       },
       body: {
@@ -32,7 +32,7 @@ exports.sendFlexCovidInfo = async () => {
         contents: [
           {
             type: 'text',
-            text: `${response.data[0].update_date}`,
+            text: `วันที่ ${response.data[0].update_date.slice(0, 10)}`,
             weight: 'bold',
             size: 'xl',
             align: 'start',
@@ -58,7 +58,7 @@ exports.sendFlexCovidInfo = async () => {
                   },
                   {
                     type: 'text',
-                    text: `${response.data[0].new_case}`,
+                    text: `${response.data[0].new_case} ราย`,
                     wrap: true,
                     color: '#EA4211',
                     size: 'lg',
@@ -82,7 +82,7 @@ exports.sendFlexCovidInfo = async () => {
                   },
                   {
                     type: 'text',
-                    text: `${response.data[0].new_death}`,
+                    text: `${response.data[0].new_death} ราย`,
                     wrap: true,
                     color: '#191717',
                     size: 'md',
@@ -106,7 +106,7 @@ exports.sendFlexCovidInfo = async () => {
             height: 'sm',
             action: {
               type: 'uri',
-              uri: 'https://linecorp.com',
+              uri: 'https://ddc.moph.go.th/covid19-dashboard/',
               label: 'ดูข้อมูลเพิ่มเติม...',
             },
             color: '#0C8742',
