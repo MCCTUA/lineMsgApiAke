@@ -1,4 +1,5 @@
 const axios = require('axios').default
+const commaNumber = require('comma-number')
 
 exports.sendFlexCovidInfo = async () => {
   const response = await axios.get(
@@ -8,7 +9,7 @@ exports.sendFlexCovidInfo = async () => {
     }
   )
 
-  //   console.log(response.data)
+  console.log(response.data)
 
   let msg = {
     type: 'flex',
@@ -51,14 +52,14 @@ exports.sendFlexCovidInfo = async () => {
                 contents: [
                   {
                     type: 'text',
-                    text: 'ผู้ป่วยรายใหม่',
+                    text: 'ผู้ป่วยรวม',
                     color: '#EA4211',
                     size: 'md',
                     flex: 0,
                   },
                   {
                     type: 'text',
-                    text: `${response.data[0].new_case} ราย`,
+                    text: `${commaNumber(response.data[0].total_case)} ราย`,
                     wrap: true,
                     color: '#EA4211',
                     size: 'lg',
