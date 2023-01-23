@@ -20,7 +20,7 @@ exports.handleEvent = (event) => {
       }
       break
     case 'postback':
-      console.log('postback')
+      console.log(`"Room Pro ID" :${event.postback.data}`)
       break
     default:
       throw new Error(`Unknow event ${JSON.stringify(event.message.type)}`)
