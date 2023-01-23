@@ -1,5 +1,6 @@
 const config = require("../config/line");
 const { sendImage } = require("./send-image");
+const { sendImageMap } = require("./send-imagemap");
 const { sendLocation } = require("./send-location");
 const { sendText } = require("./send-text");
 
@@ -9,6 +10,10 @@ exports.handleMessage = (event) => {
   switch (event.message.text.toLowerCase().trim()) {
     case "image":
       msg = sendImage();
+      break;
+
+    case "imagemap":
+      msg = sendImageMap();
       break;
 
     case "location":

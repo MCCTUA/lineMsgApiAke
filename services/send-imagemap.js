@@ -1,4 +1,4 @@
-exports.sendImage = () => {
+exports.sendImageMap = () => {
   let msg = {
     type: "imagemap",
     baseUrl: `${process.env.BASE_URL}/images/static/imagemap`,
@@ -8,8 +8,8 @@ exports.sendImage = () => {
       height: 1040,
     },
     video: {
-      originalContentUrl: `${process.env.BASE_URL}/images/static/imagemap/preview.jpg`,
-      previewImageUrl: `${process.env.BASE_URL}/images/static/imagemap/video.mp4`,
+      originalContentUrl: `${process.env.BASE_URL}/images/static/imagemap/video.mp4`,
+      previewImageUrl: `${process.env.BASE_URL}/images/static/imagemap/preview.jpg`,
       area: {
         x: 0,
         y: 0,
