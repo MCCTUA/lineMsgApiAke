@@ -5,7 +5,7 @@ const { sendImageMap } = require('./send-imagemap')
 const { sendLocation } = require('./send-location')
 const { sendText } = require('./send-text')
 
-exports.handleMessage = (event) => {
+exports.handleMessage = async (event) => {
   let msg
 
   switch (event.message.text.toLowerCase().trim()) {
@@ -18,7 +18,7 @@ exports.handleMessage = (event) => {
       break
 
     case 'covid':
-      msg = sendFlexCovidInfo()
+      msg = await sendFlexCovidInfo()
       break
 
     case 'location':

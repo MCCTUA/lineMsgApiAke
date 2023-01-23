@@ -1,4 +1,15 @@
-exports.sendFlexCovidInfo = () => {
+const axios = require('axios').default
+
+exports.sendFlexCovidInfo = async () => {
+  const response = await axios.get(
+    'https://covid19.ddc.moph.go.th/api/Cases/today-cases-all',
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+
+  console.log(response.data)
+
   let msg = {
     type: 'flex',
     altText: 'รายงานสถานการณ์โควิด ประจำวัน',
@@ -21,7 +32,7 @@ exports.sendFlexCovidInfo = () => {
         contents: [
           {
             type: 'text',
-            text: 'วันที่ 23 ม.ค. 2023',
+            text: `${response.data[0].update_date}`,
             weight: 'bold',
             size: 'xl',
             align: 'start',
@@ -47,7 +58,7 @@ exports.sendFlexCovidInfo = () => {
                   },
                   {
                     type: 'text',
-                    text: '2,000 ราย',
+                    text: `${response.data[0].new_case}`,
                     wrap: true,
                     color: '#EA4211',
                     size: 'lg',
@@ -71,7 +82,7 @@ exports.sendFlexCovidInfo = () => {
                   },
                   {
                     type: 'text',
-                    text: '20 ราย',
+                    text: `${response.data[0].new_death}`,
                     wrap: true,
                     color: '#191717',
                     size: 'md',
