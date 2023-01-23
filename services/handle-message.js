@@ -1,4 +1,5 @@
 const config = require('../config/line')
+const { sendFlexCovidInfo } = require('./send-flex-covid-info')
 const { sendImage } = require('./send-image')
 const { sendImageMap } = require('./send-imagemap')
 const { sendLocation } = require('./send-location')
@@ -14,6 +15,10 @@ exports.handleMessage = (event) => {
 
     case 'imagemap':
       msg = sendImageMap()
+      break
+
+    case 'covid':
+      msg = sendFlexCovidInfo()
       break
 
     case 'location':

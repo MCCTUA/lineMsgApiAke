@@ -18,7 +18,7 @@ exports.sendImageMap = () => {
       },
       externalLink: {
         linkUri: 'https://google.com',
-        label: 'ดูวิดีโอทั้งหมด',
+        label: 'ดู VDO ที่เหลือ',
       },
     },
     actions: [
