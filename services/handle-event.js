@@ -24,6 +24,16 @@ exports.handleEvent = (event) => {
       // console.log(`"Room Pro ID" :${event.postback.data}`)
       handlePostback(event)
       break
+
+    case 'follow':
+      console.log(`มีคนติดตามเพิ่ม / เลิก Block คือ : ${event.source.userId}`)
+      // อาจจะเอาไปเพิ่มในฐานข้อมูลต่อไปได้
+      break
+
+    case 'unfollow':
+      console.log(`มีคน Block / เลิกเป็นเพื่อนแล้ว`)
+      // อาจจะเอาไป ทำต่อในฐานข้อมูลต่อไปได้ เช่น ลบ userId นี้ออก
+      break
     default:
       throw new Error(`Unknow event ${JSON.stringify(event.message.type)}`)
   }
