@@ -1,4 +1,5 @@
 const service = require('./handle-message')
+const { handlePostback } = require('./handle-postback')
 
 // event handler
 exports.handleEvent = (event) => {
@@ -20,7 +21,8 @@ exports.handleEvent = (event) => {
       }
       break
     case 'postback':
-      console.log(`"Room Pro ID" :${event.postback.data}`)
+      // console.log(`"Room Pro ID" :${event.postback.data}`)
+      handlePostback(event)
       break
     default:
       throw new Error(`Unknow event ${JSON.stringify(event.message.type)}`)

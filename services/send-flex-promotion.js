@@ -3,9 +3,9 @@ const axios = require('axios').default
 exports.sendFlexPromotion = async () => {
   const response = await axios.get(
     // process.env.BASE_URL + '/getpromotion',
-    // `${process.env.BASE_URL}/getpromotion`,
+    `${process.env.BASE_URL}/getpromotion`,
     // 'http://localhost:4000/getpromotion',
-    `${process.env.BASE_LOCAL_URL}/getpromotion`,
+    // `${process.env.BASE_LOCAL_URL}/getpromotion`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
@@ -18,6 +18,7 @@ exports.sendFlexPromotion = async () => {
 
   bubbles = promotions.map((item) => {
     let postbackType = { type: 'roompromotion' }
+    // เอา type ไปเช็คเพิ่มเติม เพื่อ response หรือ query ตอบกลับไปให้ลูกค้า
     let newItem = { ...postbackType, ...item }
     return {
       type: 'bubble',
@@ -59,8 +60,8 @@ exports.sendFlexPromotion = async () => {
             action: {
               type: 'postback',
               label: 'ดูรายละเอียดเพิ่มเติม',
-              data: JSON.stringify(item),
-              // data: JSON.stringify(newItem),
+              // data: JSON.stringify(item),
+              data: JSON.stringify(newItem),
             },
             color: '#077BA6',
           },
