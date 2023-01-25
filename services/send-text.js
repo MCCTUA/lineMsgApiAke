@@ -11,6 +11,8 @@ exports.sendText = (event) => {
     msg = { type: 'text', text: 'ฮ่าๆๆๆ' }
   } else if (msgText === 'liff') {
     msg = { type: 'text', text: 'https://liff.line.me/1657847875-BQovPKz5' }
+  } else if (msgText === 'จองวัคซีนสำเร็จ') {
+    msg = { type: 'text', text: 'ขอบคุณที่จองวัคซีนกับเรา' }
   } else if (msgText === 'love') {
     // send sticker format
     msg = {

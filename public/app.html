@@ -55,8 +55,17 @@
           )
 
           alert(JSON.stringify(reponse.data))
+          alert(JSON.stringify(reponse.data.message))
 
           // ส่งข้อความกลับไปที่ห้อง Chat
+          await liff.sendMessages([
+            {
+              type: 'text',
+              text: reponse.data.message,
+              //   text: 'xxxxx',
+            }, //คำว่า จองวัคซีนสำเร็จ (from backend)
+          ])
+          liff.closeWindow() // ปิดหน้าต่างหลังทำงานเสร็จ
         })
       })
     </script>
