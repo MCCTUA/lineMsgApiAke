@@ -9,6 +9,8 @@ exports.sendText = (event) => {
     msg = { type: 'text', text: 'มีโปรโมชั่นวัคซีน ราคา 1,500 บาท' }
   } else if (msgText === '555') {
     msg = { type: 'text', text: 'ฮ่าๆๆๆ' }
+  } else if (msgText === 'liff') {
+    msg = { type: 'text', text: 'https://liff.line.me/1657847875-BQovPKz5' }
   } else if (msgText === 'love') {
     // send sticker format
     msg = {
