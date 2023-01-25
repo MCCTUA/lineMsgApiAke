@@ -6,8 +6,8 @@ const { client } = require('../config/line')
 exports.createRichMenu = async () => {
   const richMenuAA = {
     size: {
-      width: 2500, // รูป Rich Menu ขนาด 3x2 (2500/3 = 833)
-      height: 1686, // (1686/2 = 843)
+      width: 2500,
+      height: 1686,
     },
     selected: false,
     name: 'My RichMenu',
@@ -46,7 +46,7 @@ exports.createRichMenu = async () => {
         },
         action: {
           type: 'message',
-          text: 'roompromotion',
+          text: 'room promotion',
         },
       },
       {
@@ -95,12 +95,11 @@ exports.createRichMenu = async () => {
 
   const imagePath = path.resolve('./') + '/public/images/static/richmenu-aa.png'
   const bufferImage = readFileSync(imagePath)
-
   await client.setRichMenuImage(richMenuAAId, bufferImage)
 
   // 3. Set default menu (กรณีมีหลาย menu)
 
-  await client.setDefaultRichMenu(richMenuAA)
+  await client.setDefaultRichMenu(richMenuAAId)
 
   // 4. Create alias to richmenu สร้างชื่อเล่นให้กับ menu แทนการจำ id
   await client.createRichMenuAlias(richMenuAAId, 'richmenu-alias-aa')

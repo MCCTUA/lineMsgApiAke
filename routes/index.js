@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../config/mysql')
+const { createRichMenu } = require('../services/create-richmenu')
+const { deleteRichMenu } = require('../services/delete-richmenu')
 
 /* localhost:4000/getpromotion */
 router.get('/getpromotion', async function (req, res, next) {
@@ -20,6 +22,18 @@ router.get('/getpromotion/:id', async function (req, res, next) {
   ]) // line ยอมให้แสดง flex message สูงสุด 12 อัน
 
   return res.status(200).json(rows[0])
+})
+
+/* localhost:4000/createrichmenu */
+router.get('/createrichmenu', async function (req, res, next) {
+  await createRichMenu()
+  return res.status(200).json({ message: 'สร้าง Menu สำเร็จ' })
+})
+
+// localhost:4000/deleterichmenu
+router.get('/deleterichmenu', async function (req, res, next) {
+  await deleteRichMenu()
+  return res.status(200).json({ message: 'ลบเมนูสำเร็จ' })
 })
 
 module.exports = router
