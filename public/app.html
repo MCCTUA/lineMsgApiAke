@@ -68,6 +68,18 @@
           liff.closeWindow() // ปิดหน้าต่างหลังทำงานเสร็จ
         })
       })
+
+      async function scan() {
+        const result = await liff.scanCodeV2()
+        // ส่งข้อความกลับไปที่ห้อง chat
+        await liff.sendMessages([
+          {
+            type: 'text',
+            text: result.value,
+          },
+        ])
+        liff.closeWindow()
+      }
     </script>
   </head>
   <body>
@@ -76,6 +88,10 @@
       <img id="picture" width="100" />
       <h3 id="user"></h3>
 
+      <!-- line scan -->
+      <button type="button" onclick="scan()">Scan QR Code</button>
+
+      <!-- รับ form จาก user ใน LIFF -->
       <div class="container">
         <form class="row g-3" id="myForm" method="post">
           <div class="col-md-4">
