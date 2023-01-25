@@ -70,4 +70,16 @@ router.get('/auth/callback', async function (req, res, next) {
   })
 })
 
+// จองวัคซีน รับข้อมูลจาก Frontend (public/app.html) ในส่วนการรับค่าจาก Form
+// localhost:4000/bookvaccine
+router.post('/bookvaccine', async function (req, res, next) {
+  // console.log(req.body)
+  const conn = await db.connectMySQL()
+  const [result] = await conn.query('INSERT INTO book_vaccine SET ?', req.body)
+  return res.status(200).json({
+    bookId: result.insertId, // last insert id จาก database
+    message: 'จองวัคซีนสำเร็จ',
+  })
+})
+
 module.exports = router

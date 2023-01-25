@@ -31,12 +31,67 @@
         document.getElementById('user').textContent =
           'ยินดีต้อนรับ คุณ ' + profile.displayName
         document.getElementById('picture').src = profile.pictureUrl
+        document.getElementById('userId').value = profile.userId
+
+        // submit form
+        const form = document.querySelector('form')
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault()
+          //   alert('ok')
+          const formData = new FormData(form)
+
+          // แปลง formData ให้เป็น JSON string อย่างง่าย
+          const bodyJSON = JSON.stringify(Object.fromEntries(formData))
+          //   alert(bodyJSON) // สามารถเอา bodyJSON ไป save ลง Database
+
+          const reponse = await axios.post(
+            'https://a8c4-184-22-212-71.ap.ngrok.io/bookvaccine',
+            bodyJSON,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+
+          alert(JSON.stringify(reponse.data))
+
+          // ส่งข้อความกลับไปที่ห้อง Chat
+        })
       })
     </script>
   </head>
   <body>
-    <h1>ระบจองวัคซีน</h1>
-    <img id="picture" width="100" />
-    <h3 id="user"></h3>
+    <div class="container">
+      <h1>ระบจองวัคซีน</h1>
+      <img id="picture" width="100" />
+      <h3 id="user"></h3>
+
+      <div class="container">
+        <form class="row g-3" id="myForm" method="post">
+          <div class="col-md-4">
+            <input type="hidden" id="userId" name="userId" />
+            <label for="inputState" class="form-label">เลือกยี่ห้อวัคซีน</label>
+            <select id="inputState" class="form-select" name="vaccine">
+              <option selected>โปรดเลือก...</option>
+              <option>Moderna</option>
+              <option>Pfizer</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">จำนวน</label>
+            <input
+              type="number"
+              class="form-control"
+              id="inputEmail4"
+              name="qty"
+            />
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">จองวัคซีน</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
