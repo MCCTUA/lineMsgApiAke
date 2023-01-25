@@ -36,4 +36,10 @@ router.get('/deleterichmenu', async function (req, res, next) {
   return res.status(200).json({ message: 'ลบเมนูสำเร็จ' })
 })
 
+// localhost:4000/auth/callback // ใช้กับ Line Login
+router.get('/auth/callback', async function (req, res, next) {
+  console.log(req.query.code)
+  return res.status(200).json({ message: 'Login สำเร็จ' })
+})
+
 module.exports = router
