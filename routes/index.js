@@ -61,8 +61,13 @@ router.get('/auth/callback', async function (req, res, next) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     }
   )
+  // get profile form id_token
+  const user = jwt_decode(response.data.id_token)
 
-  return res.status(200).json(response.data)
+  return res.status(200).json({
+    user: user,
+    response: response.data,
+  })
 })
 
 module.exports = router
