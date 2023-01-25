@@ -27,7 +27,7 @@ exports.handleEvent = (event) => {
 
     case 'follow':
       console.log(`มีคนติดตามเพิ่ม / เลิก Block คือ : ${event.source.userId}`)
-      // อาจจะเอาไปเพิ่มในฐานข้อมูลต่อไปได้
+      // อาจจะเอาไปเพิ่มในฐานข้อมูลต่อไปได้ แต่กรณีนี้จะเก็บได้เฉพาะ userId ส่วนชื่อ และ Email จะไม่สามารถทำได้ ต้องไปทำใน Line Login
       break
 
     case 'unfollow':
